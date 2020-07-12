@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~  Github: https://github.com/yoyling
+  ~  Created by yoyling on 2020/07/12.
+  ~  All rights reserved.
+  -->
+
+<beans>
+
+    <bean id="log-bean-factory-post-processor" class="com.yoyling.spring.context.processor.LogBeanFactoryPostProcessor"/>
+
+    <bean id="application-listener" class="com.yoyling.spring.context.processor.ApplicationListenerImpl"/>
+
+    <!-- CustomEditorConfigurer example -->
+
+    <bean id="date-holder" class="com.yoyling.spring.context.processor.DateHolder">
+        <property name="date">
+            <value>2019-10-12</value>
+        </property>
+    </bean>
+
+    <bean id="date-property-editor" class="com.yoyling.spring.context.processor.DatePropertyEditor">
+        <property name="datePattern">
+            <value>yyyy-MM-dd</value>
+        </property>
+    </bean>
+
+    <bean id="date-property-editor-registrar" class="com.yoyling.spring.context.processor.DatePropertyEditorRegistrar">
+        <property name="propertyEditor">
+            <ref bean="date-property-editor"/>
+        </property>
+    </bean>
+
+    <bean id="custom-property-editor-configurer" class="com.yoyling.spring.factory.config.CustomEditorConfigurer">
+        <property name="propertyEditorRegistrars">
+            <list>
+                <ref bean="date-property-editor-registrar"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

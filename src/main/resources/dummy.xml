@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Github: https://github.com/yoyling
+  ~ Created by yoyling on 2020/07/12.
+  ~ All rights reserved.
+  -->
+
+<beans>
+
+
+    <bean id="dummy1"
+          class="com.yoyling.spring.xml.pojo.Dummy"
+          init-method="initialize"
+          destroy-method="dispose">
+    </bean>
+
+    <bean id="zombie" class="com.yoyling.spring.xml.pojo.Zombie">
+
+    </bean>
+
+    <bean id="dummy2" class="com.yoyling.spring.xml.pojo.Dummy" depends-on="dummy1,zombie">
+
+    </bean>
+
+    <bean id="dummy3" class="com.yoyling.spring.xml.pojo.Dummy" lazy-init="true">
+
+    </bean>
+
+
+    <bean id="dummy4" class="com.yoyling.spring.xml.pojo.Dummy" singleton="false">
+
+    </bean>
+
+</beans>
